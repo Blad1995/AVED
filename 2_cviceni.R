@@ -80,8 +80,22 @@ vyvoj_dluhu[seq(from = 2, to = roky, by = 2)]
 
 
 # úkol 3
-# doma !!!
 
+nah_urok <- 1 + runif(roky,min = 0, max = 2 * urok)
+k_nah_urok <- cumprod(nah_urok)
+n_vyvoj_dluhu <- vklad * k_nah_urok
+
+plot(1:roky, vyvoj_dluhu, type = 'l', col = "black")
+lines(1:roky, n_vyvoj_dluhu, col = "red")
+
+
+# úkol 4
+
+diff_vklad <- n_vyvoj_dluhu - vyvoj_dluhu
+proc_diff_vklad <- diff_vklad / vyvoj_dluhu
+
+plot(1:roky, proc_diff_vklad, type = 'l', col = "red")
+abline(h = 0)
 
 # úkol 5
  (1:roky)[vyvoj_dluhu > 2*vklad][1]
