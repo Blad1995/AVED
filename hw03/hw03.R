@@ -35,8 +35,9 @@ save(modal_split, train_total, transit, file = "results.RData")
 # 4. sort transit dataset so that the first row is for 2004, the second for 2005, etc.
 
 transit <- transit[order(transit$time, decreasing = FALSE), ]
-
 save(modal_split, train_total, transit, file = "results.RData")
 
 # 5.  add transit_growth variable to the dataset transit
+
+transit$transit_growth <- c(NA,(transit$transit_volume[-1] / transit$transit_volume[-nrow(transit)] - 1 ) * 100)
 save(modal_split, train_total, transit, file = "results.RData")
