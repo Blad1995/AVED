@@ -54,6 +54,7 @@ setrizeny_vyber[length(setrizeny_vyber-1)]
 
 
 # Krásy složeného úročení
+rm(list=ls())
 
 vklad <- 1000
 urok <- 0.02
@@ -131,11 +132,29 @@ lines(cas[-1], inflation, type = "l", col = "blue")
 rm(list= ls())
 price <- c(100,90,80,70,60,50)
 quantity  <- c(30,60,90,120,200,210)
-plot(price, quantity* price)
+plot(price, quantity * price)
 
 
 # HW !!!!
-max_quantity <-
+max_price <- max(price)
+i_max_price <- seq_along(price)[price == max_price]
+min_price <- min(price)
+i_min_price <- seq_along(price)[price == min_price]
+q1 <- quantity[i_max_price]
+q0 <- quantity[i_min_price]
+p1 <- max_price
+p0 <- min_price
 
-elasticity <- (quantity[length(quantity)] - quantity[])*
+
+maxmin_elasticity <- ((q1 - q0) / (q0 + q1)) / ((p1 - p0) / (p1 + p0))
+
+pn_1 <- price[-1]
+pn_0 <- price[-length(price)]
+
+qn_1 <- quantity[-1]
+qn_0 <- quantity[-length(quantity)]
+
+elast_res <- ((pn_1+pn_0)*(qn_1-qn_0)) / ((pn_1-pn_0)*(qn_0+qn_1))
+
+
 
